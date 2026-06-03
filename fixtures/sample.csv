@@ -1,0 +1,4 @@
+id,name,amount,owner
+1,Alpha,10,a@example.com
+2,Beta,20,b@example.com
+3,Gamma,30,c@example.com
