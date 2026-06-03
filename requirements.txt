@@ -1,0 +1,8 @@
+# Python deps for gen_fixtures.py (fixture generation only; not needed to run the probe).
+# Install into a throwaway venv:  uv venv .venv && uv pip install --python .venv/bin/python -r requirements.txt
+reportlab
+python-docx
+openpyxl
+Pillow
+python-pptx
+xlwt

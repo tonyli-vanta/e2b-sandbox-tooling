@@ -1,0 +1,8 @@
+node_modules/
+package-lock.json
+.venv/
+fixgen/
+__pycache__/
+e2b-probe-out/
+e2b-fixtures/
+*.pyc

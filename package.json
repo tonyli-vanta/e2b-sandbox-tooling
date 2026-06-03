@@ -1,0 +1,14 @@
+{
+  "name": "e2b-sandbox-tooling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tools to audit and test Vanta's E2B runCode sandbox (AIPLAT-508). Standalone — no monorepo dependency.",
+  "type": "commonjs",
+  "scripts": {
+    "probe": "node e2b-probe.cjs",
+    "run-fixtures": "node e2b-run-fixtures.cjs"
+  },
+  "dependencies": {
+    "@e2b/code-interpreter": "2.3.3"
+  }
+}
