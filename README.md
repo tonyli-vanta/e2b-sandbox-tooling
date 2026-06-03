@@ -17,6 +17,7 @@ Related:
 | `e2b-probe.cjs` | Spin up a live `runCode` sandbox, capture `pip list` / `dpkg -l` / extraction-tool inventory → `/tmp/e2b-probe-out/`. |
 | `gen_fixtures.py` | Generate deterministic test fixtures (csv, html, xlsx w/ hyperlink + phantom-row trap, legacy xls, text pdf, image-only "scanned" pdf, png, docx, pptx) → `/tmp/e2b-fixtures/`. |
 | `e2b-run-fixtures.cjs` | Upload the fixtures into a live sandbox and run each capability-matrix command, printing real output. |
+| `upload.cjs` | Push the checked-in `fixtures/` into an **already-running** sandbox (via `Sandbox.connect`) so you can run the matrix commands by hand in an interactive `e2b sandbox create` session. |
 
 ## Prerequisites
 
@@ -45,6 +46,15 @@ uv venv .venv && uv pip install --python .venv/bin/python -r requirements.txt
 **3. Run fixtures through the sandbox commands**
 ```bash
 node e2b-run-fixtures.cjs
+```
+
+**4. Manually test in an interactive sandbox** — push the checked-in fixtures into a sandbox you're poking at by hand:
+```bash
+e2b sandbox create runCode-dev        # note the sandbox id; keep this session open
+# in a second terminal:
+node upload.cjs <sandboxId>            # writes fixtures/ -> /home/user/fixtures
+# back in the sandbox shell:
+cd ~/fixtures && pdftotext text.pdf -
 ```
 
 ## Notes
