@@ -50,10 +50,14 @@ node e2b-run-fixtures.cjs
 
 **4. Manually test in an interactive sandbox** — push the checked-in fixtures into a sandbox you're poking at by hand:
 ```bash
-e2b sandbox create runCode-dev        # note the sandbox id; keep this session open
-# in a second terminal:
-node upload.cjs <sandboxId>            # writes fixtures/ -> /home/user/fixtures
-# back in the sandbox shell:
+# terminal 1 — open the sandbox and keep this session running:
+e2b sandbox create runCode-dev
+
+# terminal 2 — get the sandbox id, then upload the fixtures into that sandbox:
+e2b sandbox list                      # copy the running sandbox's id
+node upload.cjs <sandboxId>           # writes fixtures/ -> /home/user/fixtures
+
+# back in terminal 1 (the sandbox shell): fixtures are now present
 cd ~/fixtures && pdftotext text.pdf -
 ```
 
