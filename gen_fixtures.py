@@ -68,6 +68,18 @@ doc.add_paragraph("First paragraph of the Word document.")
 doc.add_paragraph("Second paragraph with data value 42 and keyword AUDIT.")
 doc.save(f"{OUT}/sample.docx")
 
+# --- Legacy .doc (libreoffice converts from sample.docx; antiword fixture) ---
+# python-docx cannot write the binary .doc format and there is no pure-Python alternative,
+# so we shell libreoffice on the dev box. Skips cleanly when libreoffice is not installed.
+import shutil, subprocess
+if shutil.which("libreoffice"):
+    subprocess.run(
+        ["libreoffice", "--headless", "--convert-to", "doc", "--outdir", OUT, f"{OUT}/sample.docx"],
+        check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+    )
+else:
+    print("libreoffice not found on PATH; skipping sample.doc generation (install libreoffice to produce the antiword fixture).")
+
 # --- PPTX (python-pptx) — gap in sandbox, fixture proves the gap ---
 from pptx import Presentation
 prs = Presentation()
