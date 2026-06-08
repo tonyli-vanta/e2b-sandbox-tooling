@@ -18,6 +18,7 @@ const CMDS = [
   ["Scanned PDF rasterize (pdftoppm works)", `pdftoppm -png -r 50 ${REMOTE}/scanned.pdf /tmp/pg && ls -1 /tmp/pg*.png`],
   ["PNG (Pillow opens; no OCR)", `python3 -c "from PIL import Image; im=Image.open('${REMOTE}/image_text.png'); print('size',im.size,'mode',im.mode)"`],
   ["DOCX (python-docx)", `python3 -c "import docx; d=docx.Document('${REMOTE}/sample.docx'); print(chr(10).join(p.text for p in d.paragraphs))"`],
+  ["Legacy DOC (antiword)", `antiword ${REMOTE}/sample.doc | head`],
   ["PPTX (expect ModuleNotFoundError = gap)", `python3 -c "import pptx; print('pptx present')"`],
   ["HTML (bs4+lxml)", `python3 -c "from bs4 import BeautifulSoup; print(BeautifulSoup(open('${REMOTE}/sample.html'),'lxml').get_text(' ',strip=True))"`],
 ];
